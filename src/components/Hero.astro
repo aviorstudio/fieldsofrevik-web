@@ -1,5 +1,36 @@
 ---
 import titleConcept from '../assets/title-concept-1.png';
+
+// Import card art assets
+import crabKnight from '../assets/card-art/crab-knight-512x512.png';
+import mosspawDuelist from '../assets/card-art/mosspaw-duelist-512x512.png';
+import jellyChampion from '../assets/card-art/jelly-champion-512x512.png';
+import greenGrowth from '../assets/card-art/green-growth-512x512.png';
+import anastasiaChampion from '../assets/card-art/anastasia-champion-512x512.png';
+import salamanderMage from '../assets/card-art/salamander-mage-512x512.png';
+import greenMoss from '../assets/card-art/green-moss-512x512.png';
+import crocodileMystic from '../assets/card-art/crocodile-mystic-512x512.png';
+import orcaWarrior from '../assets/card-art/orca-warrior-512x512.png';
+import osusMystic from '../assets/card-art/osus-mystic-512x512.png';
+import toadWizard from '../assets/card-art/toad-wizard-512x512.png';
+import steamcallerChampion from '../assets/card-art/steamcaller-champion-512x512.png';
+import foxRogue from '../assets/card-art/fox-rogue-512x512.png';
+
+const cardArtAssets = [
+	{ src: anastasiaChampion.src, name: 'Anastasia the Wild' },
+	{ src: crabKnight.src, name: 'Coralshell Knight' },
+	{ src: crocodileMystic.src, name: 'Crocus Mystic' },
+	{ src: foxRogue.src, name: 'Syndicate Rogue' },
+	{ src: greenGrowth.src, name: 'Overgrowth' },
+	{ src: greenMoss.src, name: 'Brianhorn Ritual' },
+	{ src: jellyChampion.src, name: 'Sparktide Jelly' },
+	{ src: mosspawDuelist.src, name: 'Mosspaw Duelist' },
+	{ src: orcaWarrior.src, name: 'Blackfin Raider' },
+	{ src: osusMystic.src, name: 'Osus Mystic' },
+	{ src: salamanderMage.src, name: 'Court Sorceror' },
+	{ src: steamcallerChampion.src, name: 'Emperium Lowlander' },
+	{ src: toadWizard.src, name: 'Lilydrop Seer' }
+];
 ---
 
 <main class="hero-container">
@@ -13,10 +44,62 @@ import titleConcept from '../assets/title-concept-1.png';
 				Embark on an epic journey through mystical lands filled with adventure, mystery, and ancient secrets waiting to be discovered.
 			</p>
 			
-			<a href="https://app.fieldsofrevik.com" class="play-alpha-btn">
-				<span class="btn-text">Play Alpha</span>
-				<div class="btn-glow"></div>
-			</a>
+			<div class="button-container">
+				<a href="https://app.fieldsofrevik.com" class="play-alpha-btn primary-btn">
+					<span class="btn-text">Play Alpha</span>
+					<div class="btn-glow"></div>
+				</a>
+				<button id="about-btn" class="about-btn secondary-btn">
+					<span class="btn-text">About</span>
+					<div class="btn-glow"></div>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- About Modal -->
+	<div id="about-modal" class="modal">
+		<div class="modal-content">
+			<button class="close-btn" id="close-modal">&times;</button>
+			
+			<div class="about-content">
+				<h2 class="about-title">About Fields of Revik</h2>
+				<p class="about-description">
+					Fields of Revik is an epic fantasy trading card game where strategy meets mystical adventure. 
+					Collect powerful creatures, cast ancient spells, and battle through enchanted realms. 
+					Each card tells a story of heroes, magic, and legendary beasts in a world where every decision shapes your destiny.
+				</p>
+				
+				<div class="carousel-container">
+					<button class="carousel-btn prev-btn" id="prev-btn">‹</button>
+					<div class="carousel">
+						<div class="carousel-track" id="carousel-track">
+							{/* Duplicate cards at the beginning for infinite scroll */}
+							{cardArtAssets.slice(-3).map((card, index) => (
+								<div class="card-slide">
+									<img src={card.src} alt={card.name} class="card-image" />
+									<h3 class="card-name">{card.name}</h3>
+								</div>
+							))}
+							{/* Original cards */}
+							{cardArtAssets.map((card, index) => (
+								<div class="card-slide">
+									<img src={card.src} alt={card.name} class="card-image" />
+									<h3 class="card-name">{card.name}</h3>
+								</div>
+							))}
+							{/* Duplicate cards at the end for infinite scroll */}
+							{cardArtAssets.slice(0, 3).map((card, index) => (
+								<div class="card-slide">
+									<img src={card.src} alt={card.name} class="card-image" />
+									<h3 class="card-name">{card.name}</h3>
+								</div>
+							))}
+						</div>
+					</div>
+					<button class="carousel-btn next-btn" id="next-btn">›</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </main>
@@ -102,7 +185,16 @@ import titleConcept from '../assets/title-concept-1.png';
 		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 	}
 
-	.play-alpha-btn {
+	.button-container {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
+	.play-alpha-btn,
+	.about-btn {
 		position: relative;
 		display: inline-block;
 		background: linear-gradient(45deg, #8b4513, #d2691e, #cd853f);
@@ -124,6 +216,17 @@ import titleConcept from '../assets/title-concept-1.png';
 		font-family: 'Cinzel', serif;
 	}
 
+	.primary-btn {
+		background: linear-gradient(45deg, #8b4513, #d2691e, #cd853f);
+	}
+
+	.secondary-btn {
+		background: linear-gradient(45deg, #374151, #4b5563, #6b7280);
+		box-shadow: 
+			0 4px 15px rgba(75, 85, 99, 0.4),
+			inset 0 1px 0 rgba(255, 255, 255, 0.2);
+	}
+
 	.btn-text {
 		position: relative;
 		z-index: 2;
@@ -140,18 +243,30 @@ import titleConcept from '../assets/title-concept-1.png';
 		z-index: 1;
 	}
 
-	.play-alpha-btn:hover {
+	.play-alpha-btn:hover,
+	.about-btn:hover {
 		transform: translateY(-2px);
+	}
+
+	.primary-btn:hover {
 		box-shadow: 
 			0 8px 25px rgba(139, 69, 19, 0.6),
 			inset 0 1px 0 rgba(255, 255, 255, 0.3);
 	}
 
-	.play-alpha-btn:hover .btn-glow {
+	.secondary-btn:hover {
+		box-shadow: 
+			0 8px 25px rgba(75, 85, 99, 0.6),
+			inset 0 1px 0 rgba(255, 255, 255, 0.3);
+	}
+
+	.play-alpha-btn:hover .btn-glow,
+	.about-btn:hover .btn-glow {
 		left: 100%;
 	}
 
-	.play-alpha-btn:active {
+	.play-alpha-btn:active,
+	.about-btn:active {
 		transform: translateY(0);
 	}
 
@@ -176,16 +291,326 @@ import titleConcept from '../assets/title-concept-1.png';
 			margin-bottom: 2rem;
 		}
 
-		.play-alpha-btn {
+		.button-container {
+			gap: 0.75rem;
+		}
+
+		.play-alpha-btn,
+		.about-btn {
 			padding: 0.875rem 2rem;
 			font-size: 1.125rem;
 		}
 	}
 
 	@media (max-width: 480px) {
-		.play-alpha-btn {
+		.button-container {
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		.play-alpha-btn,
+		.about-btn {
 			padding: 0.75rem 1.5rem;
 			font-size: 1rem;
 		}
 	}
+
+	/* Modal Styles */
+	.modal {
+		display: none;
+		position: fixed;
+		z-index: 1000;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.4);
+		backdrop-filter: blur(1px);
+	}
+
+	.modal.show {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		animation: fadeIn 0.3s ease;
+	}
+
+	.modal-content {
+		background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+		padding: 2rem;
+		border-radius: 15px;
+		max-width: 90vw;
+		max-height: 90vh;
+		width: 800px;
+		position: relative;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+		border: 1px solid rgba(212, 175, 55, 0.2);
+		overflow-y: auto;
+	}
+
+	.close-btn {
+		position: absolute;
+		top: 15px;
+		right: 20px;
+		background: none;
+		border: none;
+		font-size: 2rem;
+		color: #d4af37;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		z-index: 1001;
+	}
+
+	.close-btn:hover {
+		color: #f4e76b;
+		transform: scale(1.1);
+	}
+
+	.about-content {
+		text-align: center;
+		color: white;
+	}
+
+	.about-title {
+		font-family: 'Cinzel', serif;
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin: 0 0 1.5rem 0;
+		color: #d4af37;
+		text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+	}
+
+	.about-description {
+		font-size: 1.1rem;
+		line-height: 1.7;
+		margin: 0 0 2.5rem 0;
+		color: #e2e8f0;
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.carousel-container {
+		position: relative;
+		width: 100%;
+		max-width: 700px;
+		margin: 0 auto;
+	}
+
+	.carousel {
+		overflow: hidden;
+		border-radius: 10px;
+		position: relative;
+	}
+
+	.carousel-track {
+		display: flex;
+		transition: transform 0.5s ease-in-out;
+	}
+
+	.card-slide {
+		min-width: 300px;
+		padding: 1rem;
+		text-align: center;
+	}
+
+	.card-image {
+		width: 100%;
+		max-width: 250px;
+		height: auto;
+		border-radius: 10px;
+		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+		transition: transform 0.3s ease;
+	}
+
+	.card-image:hover {
+		transform: scale(1.05);
+	}
+
+	.card-name {
+		font-family: 'Cinzel', serif;
+		font-size: 1.1rem;
+		font-weight: 600;
+		margin: 1rem 0 0 0;
+		color: #d4af37;
+		text-transform: capitalize;
+	}
+
+	.carousel-btn {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		background: rgba(212, 175, 55, 0.8);
+		border: none;
+		color: white;
+		font-size: 2rem;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		z-index: 10;
+	}
+
+	.carousel-btn:hover {
+		background: rgba(212, 175, 55, 1);
+		transform: translateY(-50%) scale(1.1);
+	}
+
+	.prev-btn {
+		left: -25px;
+	}
+
+	.next-btn {
+		right: -25px;
+	}
+
+	@keyframes fadeIn {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+
+	/* Responsive modal styles */
+	@media (max-width: 768px) {
+		.modal-content {
+			padding: 1.5rem;
+			width: 95vw;
+		}
+
+		.about-title {
+			font-size: 2rem;
+		}
+
+		.about-description {
+			font-size: 1rem;
+		}
+
+		.card-slide {
+			min-width: 250px;
+		}
+
+		.card-image {
+			max-width: 200px;
+		}
+
+		.carousel-btn {
+			width: 40px;
+			height: 40px;
+			font-size: 1.5rem;
+		}
+
+		.prev-btn {
+			left: -20px;
+		}
+
+		.next-btn {
+			right: -20px;
+		}
+	}
 </style>
+
+<script>
+	// Modal functionality
+	const aboutBtn = document.getElementById('about-btn');
+	const modal = document.getElementById('about-modal');
+	const closeBtn = document.getElementById('close-modal');
+	const carouselTrack = document.getElementById('carousel-track');
+	const prevBtn = document.getElementById('prev-btn');
+	const nextBtn = document.getElementById('next-btn');
+
+	let currentSlide = 3; // Start at the first real slide (after duplicates)
+	const totalSlides = 13; // Number of original card art assets
+	const slideWidth = 300; // Width of each slide
+	let isTransitioning = false;
+
+	// Open modal
+	aboutBtn?.addEventListener('click', () => {
+		modal?.classList.add('show');
+		document.body.style.overflow = 'hidden';
+		// Initialize carousel position when modal opens
+		setTimeout(() => {
+			updateCarousel(false);
+		}, 100);
+	});
+
+	// Close modal
+	closeBtn?.addEventListener('click', closeModal);
+	modal?.addEventListener('click', (e) => {
+		if (e.target === modal) {
+			closeModal();
+		}
+	});
+
+	// Close modal with Escape key
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && modal?.classList.contains('show')) {
+			closeModal();
+		}
+	});
+
+	function closeModal() {
+		modal?.classList.remove('show');
+		document.body.style.overflow = 'auto';
+	}
+
+	// Carousel functionality with infinite scroll
+	function updateCarousel(animate = true) {
+		if (carouselTrack) {
+			if (animate) {
+				carouselTrack.style.transition = 'transform 0.5s ease-in-out';
+			} else {
+				carouselTrack.style.transition = 'none';
+			}
+			carouselTrack.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+		}
+	}
+
+	function handleInfiniteScroll() {
+		if (currentSlide === 0) {
+			// Jump to the last real slide (without animation)
+			setTimeout(() => {
+				currentSlide = totalSlides;
+				updateCarousel(false);
+			}, 500);
+		} else if (currentSlide === totalSlides + 3) {
+			// Jump to the first real slide (without animation)
+			setTimeout(() => {
+				currentSlide = 3;
+				updateCarousel(false);
+			}, 500);
+		}
+	}
+
+	prevBtn?.addEventListener('click', () => {
+		if (isTransitioning) return;
+		isTransitioning = true;
+		
+		currentSlide--;
+		updateCarousel(true);
+		handleInfiniteScroll();
+		
+		setTimeout(() => {
+			isTransitioning = false;
+		}, 500);
+	});
+
+	nextBtn?.addEventListener('click', () => {
+		if (isTransitioning) return;
+		isTransitioning = true;
+		
+		currentSlide++;
+		updateCarousel(true);
+		handleInfiniteScroll();
+		
+		setTimeout(() => {
+			isTransitioning = false;
+		}, 500);
+	});
+
+	// Initialize carousel
+	setTimeout(() => {
+		if (modal?.classList.contains('show')) {
+			updateCarousel(false);
+		}
+	}, 100);
+</script>
