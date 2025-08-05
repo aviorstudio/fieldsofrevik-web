@@ -1,0 +1,37 @@
+---
+export interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary';
+  onClick?: string;
+  id?: string;
+  class?: string;
+}
+
+const { href, variant = 'primary', onClick, id, class: className } = Astro.props;
+
+const variantClasses = {
+  primary: 'backdrop-blur-[2px] bg-black/10 border-2 border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-black hover:backdrop-blur-none font-semibold shadow-md hover:shadow-lg',
+  secondary: 'backdrop-blur-[2px] bg-black/10 border-2 border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-black hover:backdrop-blur-none font-medium shadow-md hover:shadow-lg'
+};
+
+const baseClasses = 'inline-block min-w-[140px] px-6 py-3 text-base rounded-xl cursor-pointer no-underline text-center transition-all duration-200 tracking-wide';
+const classes = [baseClasses, variantClasses[variant], className].filter(Boolean).join(' ');
+---
+
+{href ? (
+  <a 
+    href={href} 
+    class={classes}
+    id={id}
+  >
+    <slot />
+  </a>
+) : (
+  <button 
+    class={classes}
+    id={id}
+    type="button"
+  >
+    <slot />
+  </button>
+)}
