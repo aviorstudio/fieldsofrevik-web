@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import GameTitle from '../components/GameTitle.astro';
 import Button from '../components/Button.astro';
 import Carousel from '../components/Carousel.astro';
+import { QwikCarousel } from '../components/QwikCarousel.tsx';
 
 // Import assets
 import titleConcept from '../assets/title-concept-2.png';
@@ -36,6 +37,12 @@ const cardArtAssets = [
   { src: steamcallerChampion, name: 'Emperium Lowlander' },
   { src: toadWizard, name: 'Lilydrop Seer' }
 ];
+
+// Convert ImageMetadata to URL strings for Qwik component
+const qwikCarouselItems = cardArtAssets.map(item => ({
+  src: item.src.src,
+  name: item.name
+}));
 ---
 
 <Layout>
@@ -67,7 +74,7 @@ const cardArtAssets = [
   
     <!-- Dialog -->
     <dialog id="carousel-dialog" class="backdrop:bg-black/50 bg-transparent p-8 m-auto rounded-2xl">
-      <Carousel items={cardArtAssets} />
+      <QwikCarousel items={qwikCarouselItems} client:load />
     </dialog>
   </div>
 </Layout>
