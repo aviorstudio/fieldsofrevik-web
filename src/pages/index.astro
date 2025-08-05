@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import GameTitle from '../components/GameTitle.astro';
 import Button from '../components/Button.astro';
-import Card from '../components/Card.astro';
 import Carousel from '../components/Carousel.astro';
 
 // Import assets
@@ -40,11 +39,14 @@ const cardArtAssets = [
 ---
 
 <Layout>
-  <Image 
-    src={titleConcept} 
-    alt="Fields of Revik - Epic Fantasy Game" 
-    class="absolute inset-0 w-full h-full object-cover -z-10" 
-  />
+  <div class="absolute inset-0 bg-gradient-to-b from-[#87CEEB] via-[#7EC8E3] to-[#98D8C8] -z-20"></div>
+  <div class="absolute inset-0 flex items-center justify-center -z-10">
+    <Image 
+      src={titleConcept} 
+      alt="Fields of Revik - Epic Fantasy Game" 
+      class="h-full w-auto min-w-full md:min-w-0 object-cover md:object-contain" 
+    />
+  </div>
   <div class="h-full flex flex-col gap-4 items-center p-8">
     <GameTitle />
       

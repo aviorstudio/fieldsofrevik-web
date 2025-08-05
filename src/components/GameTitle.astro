@@ -2,7 +2,38 @@
 import SmallCaps from './SmallCaps.astro';
 ---
 
-<h1 class="font-['Cinzel'] text-5xl m-0 text-center text-[#d4af37] [text-shadow:2px_2px_4px_rgba(0,0,0,0.5)] font-bold">
+<h1 class="shimmer-title font-['Cinzel'] text-5xl m-0 text-center font-bold">
   <SmallCaps text="Fields of" class="block text-3xl" />
   <SmallCaps text="REVIK" class="block text-6xl" />
 </h1>
+
+<style>
+  .shimmer-title {
+    background: linear-gradient(
+      110deg,
+      #d4af37 0%,
+      #d4af37 45%,
+      #e6c757 50%,
+      #d4af37 55%,
+      #d4af37 100%
+    );
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
+    text-shadow: none;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0%;
+    }
+    100% {
+      background-position: -200% 0%;
+    }
+  }
+</style>
