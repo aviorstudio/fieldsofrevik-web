@@ -1,8 +1,90 @@
 ---
-import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import GameTitle from '../components/GameTitle.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+import Carousel from '../components/Carousel.astro';
+
+// Import assets
+import titleConcept from '../assets/title-concept-2.png';
+import crabKnight from '../assets/card-art/crab-knight-512x512.png';
+import mosspawDuelist from '../assets/card-art/mosspaw-duelist-512x512.png';
+import jellyChampion from '../assets/card-art/jelly-champion-512x512.png';
+import greenGrowth from '../assets/card-art/green-growth-512x512.png';
+import anastasiaChampion from '../assets/card-art/anastasia-champion-512x512.png';
+import salamanderMage from '../assets/card-art/salamander-mage-512x512.png';
+import greenMoss from '../assets/card-art/green-moss-512x512.png';
+import crocodileMystic from '../assets/card-art/crocodile-mystic-512x512.png';
+import orcaWarrior from '../assets/card-art/orca-warrior-512x512.png';
+import osusMystic from '../assets/card-art/osus-mystic-512x512.png';
+import toadWizard from '../assets/card-art/toad-wizard-512x512.png';
+import steamcallerChampion from '../assets/card-art/steamcaller-champion-512x512.png';
+import foxRogue from '../assets/card-art/fox-rogue-512x512.png';
+
+const cardArtAssets = [
+  { src: anastasiaChampion, name: 'Anastasia the Wild' },
+  { src: crabKnight, name: 'Coralshell Knight' },
+  { src: crocodileMystic, name: 'Crocus Mystic' },
+  { src: foxRogue, name: 'Syndicate Rogue' },
+  { src: greenGrowth, name: 'Overgrowth' },
+  { src: greenMoss, name: 'Brianhorn Ritual' },
+  { src: jellyChampion, name: 'Sparktide Jelly' },
+  { src: mosspawDuelist, name: 'Mosspaw Duelist' },
+  { src: orcaWarrior, name: 'Blackfin Raider' },
+  { src: osusMystic, name: 'Osus Mystic' },
+  { src: salamanderMage, name: 'Court Sorceror' },
+  { src: steamcallerChampion, name: 'Emperium Lowlander' },
+  { src: toadWizard, name: 'Lilydrop Seer' }
+];
 ---
 
 <Layout>
-	<Hero />
+  <Image 
+    src={titleConcept} 
+    alt="Fields of Revik - Epic Fantasy Game" 
+    class="absolute inset-0 w-full h-full object-cover -z-10" 
+  />
+  <div class="h-full flex flex-col gap-4 items-center p-8">
+    <GameTitle />
+      
+    <div class="flex gap-3 mt-auto mb-8">
+      <Button 
+        variant="secondary" 
+        id="about-btn"
+      >
+        About
+      </Button>
+      <Button 
+        variant="primary" 
+        href="https://app.fieldsofrevik.com"
+      >
+        Demo
+      </Button>
+    </div>
+  
+    <!-- Dialog -->
+    <dialog id="carousel-dialog" class="backdrop:bg-black/50 bg-transparent p-8 m-auto rounded-2xl">
+      <Carousel items={cardArtAssets} />
+    </dialog>
+  </div>
 </Layout>
+ 
+
+<script>
+  const aboutBtn = document.getElementById('about-btn');
+  const dialog = document.getElementById('carousel-dialog') as HTMLDialogElement;
+  
+  // Open dialog when About button is clicked
+  aboutBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    dialog?.showModal();
+  });
+  
+  // Close dialog when clicking on backdrop
+  dialog?.addEventListener('click', (e) => {
+    if (e.target === dialog) {
+      dialog.close();
+    }
+  });
+</script>
