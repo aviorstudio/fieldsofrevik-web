@@ -1,16 +1,16 @@
 /** @jsxImportSource @builder.io/qwik */
 import { component$, useSignal, $ } from '@builder.io/qwik';
 
-export interface QwikCarouselItem {
+export interface CarouselItem {
   src: string;
   name: string;
 }
 
-export interface QwikCarouselProps {
-  items: QwikCarouselItem[];
+export interface CarouselProps {
+  items: CarouselItem[];
 }
 
-export const QwikCarousel = component$<QwikCarouselProps>(({ items }) => {
+export const Carousel = component$<CarouselProps>(({ items }) => {
   const currentIndex = useSignal(0);
   const isTransitioning = useSignal(false);
 
