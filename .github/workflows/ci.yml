@@ -1,0 +1,39 @@
+name: CI
+
+# Every pull request and every merge to main: build, then test, on one runner.
+#
+# This repository had NO .github at all, while its three sibling -web repos --
+# gdam-web, gdlint-web, termcade-web -- all had CI. Nothing has ever checked it.
+#
+# The push trigger is not redundant: there is no CD here, so nothing else covers
+# a merge to main.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    # Bounded, so a step that hangs fails here rather than sitting until the
+    # runner's own timeout hours later.
+    timeout-minutes: 15
+    steps:
+      # Third-party actions are pinned by SHA, with the tag in a trailing
+      # comment so the version is still readable.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Build
+        uses: ./.github/actions/build
+
+      - name: Test
+        uses: ./.github/actions/test
