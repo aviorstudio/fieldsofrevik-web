@@ -16,27 +16,13 @@ description: >
 runs:
   using: composite
   steps:
-    # pnpm, not bun. The other four -web repos in this organisation are bun with
-    # the version pinned in .mise.toml; this one has a pnpm-lock.yaml and no
-    # .mise.toml at all. Installing what the committed lockfile describes is the
-    # right thing for a pull request that is only meant to add a check --
-    # converting the lockfile is a separate change with its own risk.
-    - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
-      with:
-        version: 9
-
-    - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
-      with:
-        node-version: 22
-        cache: pnpm
-
     # --frozen-lockfile so CI fails on a lockfile that does not match
     # package.json, rather than quietly resolving something newer than what
     # anyone has run locally.
-    - name: Install dependencies
+    - name: Install JS dependencies
       shell: bash
-      run: pnpm install --frozen-lockfile
+      run: bun install --frozen-lockfile
 
     - name: Build
       shell: bash
-      run: pnpm run build
+      run: bun run build
