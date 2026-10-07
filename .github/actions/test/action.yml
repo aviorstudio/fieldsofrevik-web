@@ -1,21 +1,8 @@
 name: Test
-description: >
-  Is this commit good. Nothing is published here; a failure means the site is
-  wrong, not that the pipeline is.
-
-  Runs AFTER ../build, because everything it asserts is a property of ./dist. A
-  static site has two ways to be broken that matter -- it did not build, and it
-  built the wrong thing -- and only the second one needs a test.
-
-  NO no-JavaScript assertion, unlike the static sites in the nicodes
-  organisation. This one ships Qwik, so it emits JavaScript on purpose and that
-  check would fail on its first run.
-
+description: Canonical static-site test gate
 runs:
   using: composite
   steps:
-    # A build that emits nothing still "succeeds", so the artefact is checked
-    # rather than the exit code.
-    - name: The page was actually written
+    - name: Test
       shell: bash
-      run: test -s dist/index.html
+      run: make test
