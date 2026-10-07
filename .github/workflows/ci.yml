@@ -37,6 +37,9 @@ jobs:
       # one out on pnpm with no .mise.toml at all.
       - uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac # v2
 
+      - name: Validate developer profile and workflow controls
+        uses: nicodes/tools/workflow-standards@cf0e560c9bbb888488191fcce03409b6c6fbdc28 # v0.13.0
+
       - name: Build
         uses: ./.github/actions/build
 
