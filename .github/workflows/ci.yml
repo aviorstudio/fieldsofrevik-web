@@ -23,6 +23,7 @@ concurrency:
 
 jobs:
   ci:
+    name: "Test"
     runs-on: blacksmith-2vcpu-ubuntu-2404
     # Bounded, so a step that hangs fails here rather than sitting until the
     # runner's own timeout hours later.
@@ -30,14 +31,16 @@ jobs:
     steps:
       # Third-party actions are pinned by SHA, with the tag in a trailing
       # comment so the version is still readable.
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: "Check out source"
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       # Reads .mise.toml, which is where bun's version is pinned -- the same
       # arrangement the four sibling -web repos use. This repository was the odd
       # one out on pnpm with no .mise.toml at all.
-      - uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac # v2
+      - name: "Set up tools"
+        uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac # v2
 
-      - name: Validate developer profile and workflow controls
+      - name: "Validate workflow standards"
         uses: nicodes/tools/workflow-standards@61962f8712fd852d932b99284b6993e123f6ae41 # v0.15.0
 
       - name: Build
