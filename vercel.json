@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "revik.gg" }],
+      "destination": "https://fieldsofrevik.avior.studio/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.revik.gg" }],
+      "destination": "https://fieldsofrevik.avior.studio/:path*",
+      "permanent": true
+    }
+  ]
+}
