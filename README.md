@@ -1,10 +1,10 @@
-<!-- Generated from private documentation source. Do not edit directly. Source SHA256: 9b263afacb165772a442fcdda17f35262f1e4b5be2e5cb251c8f8db0187b58c6 -->
+<!-- Generated from private documentation source. Do not edit directly. Source SHA256: 237c53e41a8873c86f16abf221127b122d78e1e240e3e39f51c6f1b48aac00e4 -->
 
 # fieldsofrevik-web
 
 Static website built with Astro.
 
-Install the [Komizo release](https://github.com/nicodes/komizo#install) matching `komizo.lock`, then run:
+Install the [komizo release](https://github.com/nicodes/komizo#install) matching `komizo.lock`, then run:
 
 ```sh
 komizo dev                 # Foreground development server
