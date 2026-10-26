@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "recipe": "static-site",
+  "repository": "aviorstudio/fieldsofrevik-web",
+  "validation": {
+    "workflow": {
+      "required": [
+        "ci.yml",
+        "dependency-policy.yml"
+      ],
+      "ci_gates": [
+        "Test"
+      ]
+    }
+  }
+}
