@@ -1,50 +1,16 @@
-# Astro Starter Kit: Basics
+<!-- Generated from private documentation source. Do not edit directly. Source SHA256: 9b263afacb165772a442fcdda17f35262f1e4b5be2e5cb251c8f8db0187b58c6 -->
+
+# fieldsofrevik-web
+
+Static website built with Astro.
+
+Install the [Komizo release](https://github.com/nicodes/komizo#install) matching `komizo.lock`, then run:
 
 ```sh
-pnpm create astro@latest -- --template basics
+komizo dev                 # Foreground development server
+komizo check               # Complete applicable source, build and output checks
+komizo run build           # Generate dist/
+komizo describe            # Inspect tools and available commands
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Standard developer commands
-
-Use `mise install` for the pinned toolchain. `mise exec -- make check` installs frozen dependencies, builds the static site and runs every existing output assertion. `make test` checks an existing build. No source lint or type-check gate is configured, so that profile capability is explicitly unsupported. `make dev` runs in the foreground; stop with Ctrl-C. `make clean` removes generated output.
+Ctrl-C stops development. This website needs no runtime credentials or credential `.env` file.
