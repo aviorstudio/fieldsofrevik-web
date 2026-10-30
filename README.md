@@ -1,4 +1,4 @@
-<!-- Generated from private documentation source. Do not edit directly. Source SHA256: 163f5e04e9b1f245566da8ab3ba06ad48e5ca750670fd34f7343c3b5f2943ac6 -->
+<!-- Generated from private documentation source. Do not edit directly. Source SHA256: 5e6b52c9ee9608c3a5544efbe25b3f0c9d0297d7876b052c419f9009fddc0c73 -->
 
 # fieldsofrevik-web
 
@@ -14,3 +14,14 @@ mise tasks ls            # Inspect tools and available commands
 ```
 
 Ctrl-C stops development. This website needs no runtime credentials or credential `.env` file.
+
+For contributor verification, prepare the pinned helper source before running native tasks:
+
+```sh
+git clone https://github.com/nicodes/tools.git .ci-tools
+git -C .ci-tools checkout --detach f7e243524ce2aa29f299e4c79db33001f72f4a30
+mise install
+mise run check
+```
+
+Build commands record source and exact regular output hashes. Declared tests produce evidence from the current verification session in `.artifacts/verification`.
