@@ -1,4 +1,4 @@
-<!-- Generated from private documentation source. Do not edit directly. Source SHA256: f8f3c13b727c31a7fadbd2ed1e80ef5d1fbaafda852acd3be0e3060c156f9131 -->
+<!-- Generated from private documentation source. Do not edit directly. Source SHA256: 1a7d9ecffcc45b4ad98255312ca9ba62a424e96d75c3c1926054a5689914af75 -->
 
 # fieldsofrevik-web
 
@@ -31,3 +31,5 @@ Build commands record source and exact regular output hashes. Declared tests pro
 ## Contributor task interface
 
 Contributor tool versions and task entry points live in the native Mise configuration. Use `mise run lint` for source checks, `mise run test` for the applicable behavioral tests, and `mise run check` for the complete supported gate. `mise run clean` removes declared generated outputs while preserving source, credentials and retained data. Use `mise run dev` and `mise run stop` for this checkout's owned local session.
+
+Built exports enforce the product byte limits in `scripts/site-budget.json`: 2 MiB total, 512 KiB per file, 64 KiB gzip HTML per page and 128 KiB gzip JavaScript in aggregate. `mise run artifact-check` checks these actual output bytes alongside metadata and accessible markup. Browser acceptance covers responsive layout, images and keyboard use.
