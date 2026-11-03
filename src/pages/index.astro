@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import GameTitle from '../components/GameTitle.astro';
 import Button from '../components/Button.astro';
 import { Carousel } from '../components/Carousel';
@@ -38,10 +38,10 @@ const cardArtAssets = [
 ];
 
 // Convert ImageMetadata to URL strings for Qwik component
-const carouselItems = cardArtAssets.map(item => ({
-  src: item.src.src,
+const carouselItems = await Promise.all(cardArtAssets.map(async item => ({
+  src: (await getImage({ src: item.src, width: 512, format: 'webp', quality: 80 })).src,
   name: item.name
-}));
+})));
 ---
 
 <Layout>
