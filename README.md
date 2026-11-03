@@ -1,4 +1,4 @@
-<!-- Generated from private documentation source. Do not edit directly. Source SHA256: aee76a8d361a0fbfb82a4416ffe5ba433d946f128459d8f5ea9dca9db7c3d2d2 -->
+<!-- Generated from private documentation source. Do not edit directly. Source SHA256: f8f3c13b727c31a7fadbd2ed1e80ef5d1fbaafda852acd3be0e3060c156f9131 -->
 
 # fieldsofrevik-web
 
@@ -27,3 +27,7 @@ mise run check
 Build commands record source and exact regular output hashes. Declared tests produce evidence from the current verification session in `.artifacts/verification`.
 
 `mise run dev` owns the checkout’s foreground process tree. Dependency preparation and the application use an isolated local environment through the pinned optional ghenv CLI; no account is needed. Startup refuses changes to the native task policy during preparation. `mise run stop` stops only that checkout, and `mise run clean` refuses cleanup while its session is active.
+
+## Contributor task interface
+
+Contributor tool versions and task entry points live in the native Mise configuration. Use `mise run lint` for source checks, `mise run test` for the applicable behavioral tests, and `mise run check` for the complete supported gate. `mise run clean` removes declared generated outputs while preserving source, credentials and retained data. Use `mise run dev` and `mise run stop` for this checkout's owned local session.
