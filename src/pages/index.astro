@@ -83,7 +83,7 @@ const carouselItems = await Promise.all(cardArtAssets.map(async item => ({
     </div>
   
     <!-- Dialog -->
-    <dialog id="carousel-dialog" class="backdrop:bg-black/50 bg-transparent p-8 m-auto rounded-2xl">
+    <dialog id="carousel-dialog" aria-label="About Fields of Revik" class="backdrop:bg-black/50 bg-transparent p-8 m-auto rounded-2xl">
       <Carousel items={carouselItems} client:load />
     </dialog>
   </div>
