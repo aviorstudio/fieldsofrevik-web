@@ -1,4 +1,4 @@
-<!-- Generated from private documentation source. Do not edit directly. Source SHA256: 1a7d9ecffcc45b4ad98255312ca9ba62a424e96d75c3c1926054a5689914af75 -->
+<!-- Generated from private documentation source. Do not edit directly. Source SHA256: fe560f382dbdbace8bd77f213301e04450a9e52d159a878e028c32acc5dc2254 -->
 
 # fieldsofrevik-web
 
@@ -19,7 +19,7 @@ For contributor verification, prepare the pinned helper source before running na
 
 ```sh
 git clone https://github.com/nicodes/tools.git .ci-tools
-git -C .ci-tools checkout --detach 0f95a6df60f740b527596ed2c7f4590e3f2d5820
+git -C .ci-tools checkout --detach 39666e8d26d2bd0e1c7e5fee6f289fd0fd3a5202
 mise install
 mise run check
 ```
@@ -32,4 +32,4 @@ Build commands record source and exact regular output hashes. Declared tests pro
 
 Contributor tool versions and task entry points live in the native Mise configuration. Use `mise run lint` for source checks, `mise run test` for the applicable behavioral tests, and `mise run check` for the complete supported gate. `mise run clean` removes declared generated outputs while preserving source, credentials and retained data. Use `mise run dev` and `mise run stop` for this checkout's owned local session.
 
-Built exports enforce the product byte limits in `scripts/site-budget.json`: 2 MiB total, 512 KiB per file, 64 KiB gzip HTML per page and 128 KiB gzip JavaScript in aggregate. `mise run artifact-check` checks these actual output bytes alongside metadata and accessible markup. Browser acceptance covers responsive layout, images and keyboard use.
+Built exports enforce the product byte limits in `scripts/site-budget.toml`: 2 MiB total, 512 KiB per file, 64 KiB gzip HTML per page and 128 KiB gzip JavaScript in aggregate. `mise run artifact-check` checks these actual output bytes alongside metadata and accessible markup. Browser acceptance covers responsive layout, images and keyboard use.
