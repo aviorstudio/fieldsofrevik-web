@@ -1,4 +1,4 @@
-<!-- Generated from private documentation source. Do not edit directly. Source SHA256: fe560f382dbdbace8bd77f213301e04450a9e52d159a878e028c32acc5dc2254 -->
+<!-- Generated from private documentation source. Do not edit directly. Source SHA256: 4d8d0e97f0fa76ef437be5ef45ca53e8c75547d0c356486869771a8a1c78089a -->
 
 # fieldsofrevik-web
 
@@ -19,7 +19,7 @@ For contributor verification, prepare the pinned helper source before running na
 
 ```sh
 git clone https://github.com/nicodes/tools.git .ci-tools
-git -C .ci-tools checkout --detach 39666e8d26d2bd0e1c7e5fee6f289fd0fd3a5202
+git -C .ci-tools checkout --detach 46bf98735de2e7fe41cca1042c20c98f5b01824a
 mise install
 mise run check
 ```
