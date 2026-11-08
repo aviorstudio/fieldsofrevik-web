@@ -7,7 +7,7 @@ import qwikdev from '@qwikdev/astro';
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
+  vite: { envDir: false,
     plugins: [tailwindcss()]
   },
 
